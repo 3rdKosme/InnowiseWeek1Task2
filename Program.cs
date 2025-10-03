@@ -46,8 +46,10 @@ class Program
         Task<string> task2 = ProcessDataAsync("FILE2");
         Task<string> task3 = ProcessDataAsync("FILE3");
 
-        await Task.WhenAll(task1, task2, task3);
-        Console.WriteLine(task1.Result + "\n" + task2.Result + "\n" + task3.Result);
+        var results = await Task.WhenAll(task1, task2, task3);
+        foreach (var result in results) { 
+            Console.WriteLine(result);
+        }
 
         asyncWatch.Stop();
 
