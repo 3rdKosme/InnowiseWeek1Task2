@@ -7,21 +7,24 @@ namespace AsyncDemo;
 
 class Program
 {
-    static void ProcessData(string dataName)
+    static string ProcessData(string dataName)
     {
         Console.WriteLine($"[SYNC] Начало обработки '{dataName}'...");
         Thread.Sleep(3000);
 
-        Console.WriteLine($"[SYNC] Обработка '{dataName}' завершена за 3 секунды");
-        
+        string result = $"Обработка '{dataName}' завершена за 3 секунды";
+        Console.WriteLine($"[SYNC] {result}");
+        return result;
     }
 
-    static async Task ProcessDataAsync(string dataName)
+    static async Task<string> ProcessDataAsync(string dataName)
     {
         Console.WriteLine($"[ASYNC] Начало обратоки '{dataName}'...");
         await Task.Delay(3000);
 
-        Console.WriteLine($"[ASYNC] Обработка '{dataName}' завершена за 3 секунды");
+        string result = $"Обработка '{dataName}' завершена за 3 секунды";
+        Console.WriteLine($"[ASYNC] {result}");
+        return result;
     }
 
     static async Task Main(string[] args)
